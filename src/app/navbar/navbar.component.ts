@@ -1,6 +1,7 @@
+import { Observable } from 'rxjs';
+import { AppUser } from './../models/appUser';
 import { AuthService } from './../auth.service';
 import { Component } from '@angular/core';
-
 
 @Component({
   selector: 'navbar',
@@ -8,12 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  user$: any;
+  appUser$: Observable<AppUser>;
 
   constructor(private authService: AuthService) {
-    this.user$ = authService.user$;
+     this.appUser$ = authService.AppUser$;
   }
-  
+
   logout(): void {
     this.authService.logout();
   }

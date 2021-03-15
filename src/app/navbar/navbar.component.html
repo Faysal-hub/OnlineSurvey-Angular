@@ -17,15 +17,17 @@
                             class="sr-only">(current)</span></a>
                 </li>
             </ng-template>
-            <li *ngIf="user$ | async as user; else anonymousUser" ngbDropdown class="nav-item dropdown">
+            <li *ngIf="appUser$ | async as appUser; else anonymousUser" ngbDropdown class="nav-item dropdown">
                 <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    {{ user.displayName }}
+                    {{ appUser.name }}
                 </a>
                 <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a ngbDropdownItem class="dropdown-item" routerLink="/my/orders">My Orders</a>
-                    <a ngbDropdownItem class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-                    <a ngbDropdownItem class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+                    <ng-container *ngIf="appUser.isAdmin">
+                        <a ngbDropdownItem class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+                        <a ngbDropdownItem class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+                    </ng-container>
                     <a ngbDropdownItem class="dropdown-item" (click)="logout()">Logout</a>
                 </div>
             </li>
