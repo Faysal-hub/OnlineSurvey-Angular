@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "wzbm"
+    }
+  },
+  "defaultProject": "wzbm",
+  "cli": {
+    "analytics": "ea651f35-0e31-4b71-a381-6bcabf8b1ad8"
+  }
 }
