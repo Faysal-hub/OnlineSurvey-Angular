@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
-    <a class="navbar-brand" routerLink="/">OShop </a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
+    <a class="navbar-brand" routerLink="/">Willkommen</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,5 +32,8 @@
                 </div>
             </li>
         </ul>
+    </div>
+    <div class="navbar-brand" style="color:white;">
+        <countdown [config]="{ leftTime: 899, format: 'm:s' }"></countdown>
     </div>
 </nav>

@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CountdownModule } from 'ngx-countdown';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -26,6 +27,8 @@ import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'ngx-easy-table';
+import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 
 @NgModule({
@@ -42,6 +45,8 @@ import { TableModule } from 'ngx-easy-table';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
+    ProductsFilterComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,9 +56,9 @@ import { TableModule } from 'ngx-easy-table';
     NgbModule,
     FormsModule,
     TableModule,
+    CountdownModule,
   ],
   providers: [AuthService, AuthGuard, UsersService, CategoriesService],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}

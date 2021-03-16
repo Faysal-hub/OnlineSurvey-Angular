@@ -26,6 +26,7 @@
     "firebase": "^8.3.0",
     "firebase-tools": "^9.6.1",
     "g": "^2.0.1",
+    "ngx-countdown": "^11.0.3",
     "ngx-easy-table": "^14.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

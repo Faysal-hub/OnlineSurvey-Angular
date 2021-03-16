@@ -1,1 +1,18 @@
-<p>products works!</p>
+<div class="row">
+    <div class="col-3">
+        <products-filter></products-filter>
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <ng-container *ngFor="let product of products$ | async; let i = index">
+                <div class="col">
+                    <product-card [product]="product"></product-card>
+                    <div *ngIf="(i + 1) % 2 === 0" class="row row-cols-2"></div>
+                </div>
+            </ng-container>
+        </div>
+        <div *ngIf="(products$ | async)?.length === 0" class="alert alert-info" role="alert">
+            No Products Found!
+        </div>
+    </div>
+</div>

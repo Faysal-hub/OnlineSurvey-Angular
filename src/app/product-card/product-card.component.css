@@ -1,0 +1,11 @@
+.card {
+    margin-bottom: 30px;
+}
+
+.card-img-top {
+    height: 150px;
+}
+
+.card-footer {
+    padding: 0;
+} 

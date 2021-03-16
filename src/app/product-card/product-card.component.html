@@ -1,0 +1,10 @@
+<div *ngIf="product.title" class="card" style="width: 15rem;">
+    <img *ngIf="product.imageUrl" [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}">
+    <div class="card-body">
+        <h4 class="card-title">{{ product.title }}</h4>
+        <p class="card-text">{{ product.volume }} g</p>
+    </div>
+    <div class="card-footer">
+        <a *ngIf="showActions" routerLink="" class="btn btn-primary btn-block">Add to Cart</a>
+    </div>
+</div>

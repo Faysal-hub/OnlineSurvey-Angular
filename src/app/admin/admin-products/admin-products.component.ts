@@ -44,9 +44,10 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   private initTable() {
     this.configuration = { ...DefaultConfig };
     this.columns = [
+      { key: 'pictureNum', title: 'Bild-Code' },
       { key: 'title', title: 'Title' },
-      { key: 'volume', title: 'Volume' },
-      { key: 'key', title: '', cellTemplate: this.actionTpl }
+      { key: 'volume', title: 'Volume(g)' },
+      { key: 'key', title: '', cellTemplate: this.actionTpl },
     ]; 
   }
 
