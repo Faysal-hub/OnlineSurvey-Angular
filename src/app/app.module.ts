@@ -1,3 +1,6 @@
+import { ProductsService } from './products.service';
+import { AdminAuthGuard } from './admin-auth-guard.service';
+import { CartService } from './cart.service';
 import { CategoriesService } from './category.service';
 import { UsersService } from './user.service';
 import { AuthGuard } from './auth-guard.service';
@@ -58,7 +61,15 @@ import { ProductCardComponent } from './product-card/product-card.component';
     TableModule,
     CountdownModule,
   ],
-  providers: [AuthService, AuthGuard, UsersService, CategoriesService],
+  providers: [
+    AuthService, 
+    AuthGuard,
+    AdminAuthGuard, 
+    UsersService, 
+    CategoriesService,
+    ProductsService,
+    CartService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
