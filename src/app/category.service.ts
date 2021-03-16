@@ -10,7 +10,7 @@ export class CategoriesService {
 
   constructor(private db: AngularFireDatabase) {}
 
-  getCategories(): AngularFireList<Category> {
+  getAll(): AngularFireList<Category> {
     return this.db.list<Category>(this.dbPath, (ref) => {
       return ref.orderByChild('name');
     });

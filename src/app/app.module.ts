@@ -25,6 +25,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
+import { TableModule } from 'ngx-easy-table';
 
 
 @NgModule({
@@ -49,8 +50,10 @@ import { FormsModule } from '@angular/forms';
     AngularFireDatabaseModule,
     NgbModule,
     FormsModule,
+    TableModule,
   ],
   providers: [AuthService, AuthGuard, UsersService, CategoriesService],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}

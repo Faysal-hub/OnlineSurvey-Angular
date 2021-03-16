@@ -1,5 +1,9 @@
 import { Product } from './models/product';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+  AngularFireObject,
+} from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
 
@@ -18,7 +22,19 @@ export class ProductsService {
     return this.products;
   }
 
+  get(key: string): AngularFireObject<Product> {
+    return this.db.object<Product>(`${this.dbPath}/${key}`);
+  }
+
   create(product: Product): firebase.database.ThenableReference {
     return this.products.push(product);
+  }
+
+  update(key: string, product: Product): Promise<void> {
+    return this.db.object<Product>(`${this.dbPath}/${key}`).update(product);
+  }
+
+  delete(key: string): Promise<void> {
+    return this.db.object<Product>(`${this.dbPath}/${key}`).remove();
   }
 }

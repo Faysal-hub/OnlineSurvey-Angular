@@ -2,23 +2,17 @@
     <a routerLink="/admin/product/new" class="btn btn-primary">New Product</a>
 </p>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Bild-Code</th>
-            <th scope="col">Title</th>
-            <th scope="col">Volume</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products$ | async">
-            <td>{{ product.pictureNum }}</td>
-            <td>{{ product.title}}</td>
-            <td>{{ product.volume}}</td>
-            <td>
-                <a [routerLink]="['/admin/products/', product.key]">Edit</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+
+<p>
+<input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+</p>
+
+<div class="columns mt-2">
+    <div class="column col-12">
+        <ngx-table [data]="data" [configuration]="configuration" [columns]="columns"> </ngx-table>
+    </div>
+</div>
+
+<ng-template #actionTpl let-row>
+    <a [routerLink]="['/admin/product/', row.key]">Edit</a>
+</ng-template>
