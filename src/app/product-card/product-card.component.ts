@@ -21,15 +21,9 @@ export class ProductCardComponent {
   }
 
   removeFromCart(): void {
-    if (this.getQuantity() == 0) return;
+      if (this.cart.getQuantity(this.product) == 0)    
+      return;
 
     this.cartService.removeFromCart(this.product);
-  }
-
-  getQuantity(): number {
-    if (!this.cart?.cartLines) return 0;
-
-    let cartLine: CartLine = this.cart.cartLines[this.product.key];
-    return cartLine ? cartLine.quantity : 0;
   }
 }

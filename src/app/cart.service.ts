@@ -42,12 +42,18 @@ export class CartService {
       .snapshotChanges()
       .pipe(take(1))
       .pipe(map((scl) => ({ key: scl.key, ...scl.payload.val() })))
-      .subscribe((cl) =>
-        cartLine$.update({
-          product: product,
+      .subscribe((cl) => {
+        if (cl.quantity + change === 0) 
+        return this.removeCartLine(cartLine$);
+
+
+        return this.updateCartLine(cartLine$, {
+          title: product.title,
+          volume: product.volume,
+          imageUrl: product.imageUrl,
           quantity: (cl.quantity || 0) + change,
-        })
-      );
+        });
+      });
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -62,35 +68,35 @@ export class CartService {
   }
 
   private create(): firebase.database.ThenableReference {
-     let date = new Date();
+    let date = new Date();
 
-     let weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-     let monthNames = [
-       'Jan',
-       'Feb',
-       'Mar',
-       'Apr',
-       'May',
-       'Jun',
-       'Jul',
-       'Aug',
-       'Sep',
-       'Oct',
-       'Nov',
-       'Dec',
-     ];
-     var dateString =
-       weekdayNames[date.getDay()] +
-       ' ' +
-       date.getHours() +
-       ':' +
-       ('00' + date.getMinutes()).slice(-2) +
-       ' ' +
-       date.getDate() +
-       ' ' +
-       monthNames[date.getMonth()] +
-       ' ' +
-       date.getFullYear();
+    let weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+    var dateString =
+      weekdayNames[date.getDay()] +
+      ' ' +
+      date.getHours() +
+      ':' +
+      ('00' + date.getMinutes()).slice(-2) +
+      ' ' +
+      date.getDate() +
+      ' ' +
+      monthNames[date.getMonth()] +
+      ' ' +
+      date.getFullYear();
     return this.db.list(this.dbPath).push({
       createdOn: dateString,
     });
@@ -104,4 +110,16 @@ export class CartService {
       `${this.dbPath}/${cartId}/cartLines/${productId}`
     );
   }
+
+  private updateCartLine(
+    cartLine$: AngularFireObject<CartLine>,
+    cartLine: any
+  ): Promise<void> {
+   return cartLine$.update(cartLine);
+  }
+
+  private removeCartLine(cartLine$: AngularFireObject<CartLine>): Promise<void> {
+    return cartLine$.remove();
+  }
+  
 }

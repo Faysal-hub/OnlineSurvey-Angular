@@ -58,7 +58,16 @@ export class ProductsComponent implements OnDestroy {
   private async getCart() {
     this.cartSubscription = (await this.cartService.getCart())
       .snapshotChanges()
-      .pipe(map((sc) => ({ key: sc.key, ...sc.payload.val() })))
+      .pipe(
+        map(
+          (sc) =>
+            new Cart(
+              sc.key,
+              sc.payload.val().cartLines,
+              sc.payload.val().createdOn
+            )
+        )
+      )
       .subscribe((c) => (this.cart = c));
   }
 
