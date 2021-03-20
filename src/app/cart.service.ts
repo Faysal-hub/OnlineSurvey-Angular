@@ -31,6 +31,13 @@ export class CartService {
     return this.updateQuantity(product, -1);
   }
 
+  async clearCart(): Promise<void> {
+    let cartId = await this.getOrCreateCartId();
+    let cartLines$ = this.getCartLines(cartId);
+
+    return this.removeCartLines(cartLines$);
+  }
+
   private async updateQuantity(
     product: Product,
     change: number
@@ -43,9 +50,8 @@ export class CartService {
       .pipe(take(1))
       .pipe(map((scl) => ({ key: scl.key, ...scl.payload.val() })))
       .subscribe((cl) => {
-        if (cl.quantity + change === 0) 
-        return this.removeCartLine(cartLine$);
-
+        let quantity = (cl.quantity || 0) + change;
+        if (quantity === 0) return this.removeCartLine(cartLine$);
 
         return this.updateCartLine(cartLine$, {
           title: product.title,
@@ -115,11 +121,22 @@ export class CartService {
     cartLine$: AngularFireObject<CartLine>,
     cartLine: any
   ): Promise<void> {
-   return cartLine$.update(cartLine);
+    return cartLine$.update(cartLine);
   }
 
-  private removeCartLine(cartLine$: AngularFireObject<CartLine>): Promise<void> {
+  private removeCartLine(
+    cartLine$: AngularFireObject<CartLine>
+  ): Promise<void> {
     return cartLine$.remove();
   }
-  
+
+  private getCartLines(cartId: string): AngularFireObject<CartLine> {
+    return this.db.object<CartLine>(`${this.dbPath}/${cartId}/cartLines`);
+  }
+
+  private removeCartLines(
+    cartLines$: AngularFireObject<CartLine>
+  ): Promise<void> {
+    return cartLines$.remove();
+  }
 }
