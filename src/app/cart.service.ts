@@ -67,7 +67,7 @@ export class CartService {
 
     if (cartId) return cartId;
 
-    let cart = await this.create();
+    let cart = this.create();
     localStorage.setItem('cartId', cart.key);
 
     return cart.key;
