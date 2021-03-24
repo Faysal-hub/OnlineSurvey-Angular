@@ -1,6 +1,7 @@
 import { CartLine } from './../models/cartLine';
 import { CartService } from './../cart.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from '../models/product';
 import { Cart } from '../models/cart';
 
@@ -14,15 +15,42 @@ export class ProductCardComponent {
   @Input('cart') cart: Cart;
   @Input('showActions') showActions: boolean = true;
 
-  constructor(private cartService: CartService) {}
+  closeResult = '';
+
+  constructor(
+    private cartService: CartService,
+    private modalService: NgbModal
+  ) {}
+
+  open(content) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 
   addToCart(): void {
     this.cartService.addToCart(this.product);
   }
 
   removeFromCart(): void {
-      if (this.cart.getQuantity(this.product) == 0)    
-      return;
+    if (this.cart.getQuantity(this.product) == 0) return;
 
     this.cartService.removeFromCart(this.product);
   }

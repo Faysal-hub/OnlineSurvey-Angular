@@ -33,6 +33,7 @@ import { TableModule } from 'ngx-easy-table';
 import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     ProductsFilterComponent,
     ProductCardComponent,
     ProductQuantityComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

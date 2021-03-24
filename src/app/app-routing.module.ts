@@ -1,3 +1,4 @@
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { AuthGuard } from './auth-guard.service';
@@ -17,8 +18,9 @@ const routes: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'product-details', component: ProductDetailsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'checkout', component: CheckoutComponent },
   {
     path: 'order-success',
     component: OrderSuccessComponent,
