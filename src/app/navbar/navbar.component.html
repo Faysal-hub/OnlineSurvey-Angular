@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
-    <a class="navbar-brand" routerLink="/">Willkommen</a>
+    <a class="navbar-brand" routerLink="/">
+        <i class="fa fa-leaf"></i> Welcome
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,6 +10,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
             <a class="nav-link" routerLink="/cart" routerLinkActive="active">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 Shopping Cart
                 <span *ngIf="cart$ | async as cart" class="badge badge-warning badge-pill">{{ cart.itemsCount }}</span>
             </a>
@@ -36,6 +39,7 @@
         </ul>
     </div>
     <div class="navbar-brand" style="color:white;">
+        <i class="fa fa-clock"></i>
         <countdown [config]="{ leftTime: 899, format: 'm:s' }"></countdown>
     </div>
 </nav>

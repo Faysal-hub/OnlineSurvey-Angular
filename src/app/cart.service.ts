@@ -38,6 +38,10 @@ export class CartService {
     return this.removeCartLines(cartLines$);
   }
 
+  unassignCart(): void {
+    localStorage.removeItem('cartId');
+  }
+
   private async updateQuantity(
     product: Product,
     change: number

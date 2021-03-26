@@ -1,3 +1,4 @@
+import { OrderService } from './order.service';
 import { ProductsService } from './products.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { CartService } from './cart.service';
@@ -72,7 +73,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     UsersService, 
     CategoriesService,
     ProductsService,
-    CartService
+    CartService,
+    OrderService
   ],
   bootstrap: [AppComponent],
 })
