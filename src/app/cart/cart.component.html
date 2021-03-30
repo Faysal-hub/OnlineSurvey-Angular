@@ -2,18 +2,18 @@
     
 </div> -->
 <div class="myDesign" >
-    <h2>Shopping Cart</h2>
+    <h2>Warenkorb</h2>
     <div class="row col-10" *ngIf="cart$ | async as cart">
-        <p>You have {{ cart.itemsCount }} items in your shopping cart.
-            <button *ngIf="cart.itemsCount" (click)="clearCart()" class="btn btn-danger btn-sm">Clear Shopping Cart</button>
+        <p>Sie haben {{ cart.itemsCount }} Artikel in Ihrem Warenkorb.
+            <button *ngIf="cart.itemsCount" (click)="clearCart()" class="btn btn-danger btn-sm">Warenkorb löschen</button>
         </p>
         <table class="table">
             <thead>
                 <tr>
                     <th></th>
-                    <th scope="col">Product</th>
-                    <th scope="col" class="text-center" style="width: 230px;">Quantity</th>
-                    <th scope="col" class="text-right" style="width: 200px;">Volume(gram)</th>
+                    <th scope="col">Produkt</th>
+                    <th scope="col" class="text-center" style="width: 230px;">Menge</th>
+                    <th scope="col" class="text-right" style="width: 200px;">Volumen (Gramm)</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,10 +32,10 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th class="text-right">{{ cart.totalVolume }} gram</th>
+                <th class="text-right">{{ cart.totalVolume }} gramm</th>
             </tfoot>
         </table>
-        <button *ngIf="cart.itemsCount" routerLink="/checkout" class="btn btn-primary cOut">Checkout</button>
+        <button *ngIf="cart.itemsCount" routerLink="/checkout" class="btn btn-primary cOut">Zur Kasse</button>
     </div>
 </div>
 

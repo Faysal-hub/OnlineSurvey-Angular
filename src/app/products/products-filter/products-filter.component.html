@@ -3,7 +3,7 @@
     <div class="card" *ngIf="categories$ | async as categories">
         <ul class="list-group list-group-flush">
             <a class="list-group-item list-group-item-action" routerLink="/" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">All Categories</a>
+                [routerLinkActiveOptions]="{ exact: true }">Alle Kategorien</a>
             <a class="list-group-item list-group-item-action" *ngFor="let category of categories"
                 routerLink="/" [queryParams]="{ category: category.key }" routerLinkActive="active">{{ category.name
                 }}</a>

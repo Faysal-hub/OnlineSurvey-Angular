@@ -7,7 +7,7 @@
     <div *ngIf="cart && showActions" class="card-footer">
         <!-- <button routerLink="/product-details" class="btn btn-info btn-block">Product Details</button> -->
 
-        <button class="btn btn-info btn-block myButton" (click)="open(content)">Product Details</button>
+        <button class="btn btn-info btn-block myButton" (click)="open(content)">Produktdetails</button>
 
         <ng-template #content let-modal>
             <div class="modal-header">
@@ -105,7 +105,7 @@
             </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">schließen</button>
             </div>
         </ng-template>
 
@@ -113,7 +113,7 @@
         <button 
         *ngIf="cart.getQuantity(product) === 0; else updateQuantity"
         (click)="addToCart()" 
-         class="btn btn-secondary btn-block">Add to Cart</button>
+         class="btn btn-secondary btn-block">in den Warenkorb legen</button>
          <ng-template #updateQuantity>
             <product-quantity [product]="product" [cart]="cart"></product-quantity>
          </ng-template>

@@ -48,6 +48,7 @@ export class CartService {
   ): Promise<void> {
     let cartId = await this.getOrCreateCartId();
     let cartLine$ = this.getCartLine(cartId, product.key);
+    // let cartHistory$ = this.getCartHistory(cartId, product.key);
 
     cartLine$
       .snapshotChanges()
@@ -64,6 +65,22 @@ export class CartService {
           quantity: (cl.quantity || 0) + change,
         });
       });
+
+      // cartHistory$
+      //   .snapshotChanges()
+      //   .pipe(take(1))
+      //   .pipe(map((scl) => ({ key: scl.key, ...scl.payload.val() })))
+      //   .subscribe((cl) => {
+      //     let quantity = (cl.quantity || 0) + change;
+      //     if (quantity === 0) return this.removeCartLine(cartLine$);
+
+      //     return this.updateCartLine(cartLine$, {
+      //       title: product.title,
+      //       volume: product.volume,
+      //       imageUrl: product.imageUrl,
+      //       quantity: (cl.quantity || 0) + change,
+      //     });
+      //   });
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -120,6 +137,15 @@ export class CartService {
       `${this.dbPath}/${cartId}/cartLines/${productId}`
     );
   }
+
+  // private getCartHistory(
+  //   cartId: string,
+  //   productId: string
+  // ): AngularFireObject<CartLine>{
+  //   return this.db.object<CartLine>(
+  //     `${this.dbPath}/${cartId}/cartHistory/${productId}`
+  //   );
+  // }
 
   private updateCartLine(
     cartLine$: AngularFireObject<CartLine>,

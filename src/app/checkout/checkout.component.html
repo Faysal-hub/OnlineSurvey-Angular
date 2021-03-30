@@ -1,25 +1,25 @@
 <div class="container">
-    <h2 class="shipping" >Shipping</h2>
+    <h2 class="shipping" >Versand</h2>
     <div class="row">
         <div class="col-6">
             <div class="card" *ngIf="cart">
                 <div class="card-body">
-                    <h5 class="card-title">Order Summary</h5>
-                    <p class="card-text">You have {{ cart.itemsCount }} items in your shopping cart.</p>
+                    <h5 class="card-title">Bestellübersicht</h5>
+                    <p class="card-text">Sie haben {{ cart.itemsCount }} Artikel in Ihrem Warenkorb.</p>
                     <ul class="list-group list-group-flush">
                         <li *ngFor="let item of cart.items" class="list-group-item">
                             {{ item.quantity }} x {{ item.title }}
-                            <span class="float-right">{{ item.totalVolume}} gram</span>
+                            <span class="float-right">{{ item.totalVolume}} gramm</span>
                         </li>
-                        <li class="list-group-item font-weight-bold">Total
-                            <span class="float-right">{{ cart.totalVolume }} gram</span>
+                        <li class="list-group-item font-weight-bold">Gesamtsumme
+                            <span class="float-right">{{ cart.totalVolume }} gramm</span>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <button (click)="placeOrder()" class="btn btn-primary mybtn">Place Order</button>
+    <button (click)="placeOrder()" class="btn btn-primary mybtn">Bestellung aufgeben</button>
 </div>
 
 

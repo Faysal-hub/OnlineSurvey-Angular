@@ -1,0 +1,184 @@
+{
+  "carts" : {
+    "-MX-qaL_IAdGiJKy9s9O" : {
+      "createdOn" : "Tue 3:58 30 Mar 2021"
+    }
+  },
+  "categories" : {
+    "Brot, Reis, Nudeln und andere Getreidearten" : {
+      "name" : "Brot, Reis, Nudeln und andere Getreidearten"
+    },
+    "Brotaufstriche und Müsli" : {
+      "name" : "Brotaufstriche und Müsli"
+    },
+    "Eier und Milchprodukte" : {
+      "name" : "Eier und Milchprodukte"
+    },
+    "Fertiggereichte" : {
+      "name" : "Fertiggereichte"
+    },
+    "Fleisch, Geflügel, Fisch und Meeresfrüchte" : {
+      "name" : "Fleisch, Geflügel, Fisch und Meeresfrüchte"
+    },
+    "Obst und Gemüse" : {
+      "name" : "Obst und Gemüse"
+    },
+    "Süßes und Salziges" : {
+      "name" : "Süßes und Salziges"
+    },
+    "Öle, Saucen, Nüsse, Hülsenfrüchte" : {
+      "name" : "Öle, Saucen, Nüsse, Hülsenfrüchte"
+    }
+  },
+  "orders" : {
+    "-MX-qRuRMOlhs6f27lle" : {
+      "cartId" : "-MX-pAbz8HY95Ohep-qs",
+      "createdOn" : "3/30/2021",
+      "orderLines" : [ {
+        "imageUrl" : "https://www.loveandoliveoil.com/wp-content/uploads/2015/03/soy-sauce-noodlesH2.jpg",
+        "quantity" : 1,
+        "title" : "Nudeln",
+        "totalVolume" : 1800,
+        "volume" : 1800
+      } ]
+    }
+  },
+  "products" : {
+    "-MX1Pqe7UaUsmzCxaeTh" : {
+      "ballaststoffe" : "2,8",
+      "ballaststoffePro" : 7,
+      "category" : "Brot, Reis, Nudeln und andere Getreidearten",
+      "davonGes" : "2,5",
+      "davonGesPro" : "6,25",
+      "davonZucker" : "3,9",
+      "davonZuckerPro" : "9,75",
+      "eiweiss" : "8,5",
+      "eiweissPro" : "21,2",
+      "energieKJ" : "1,107.96",
+      "energieKJPro" : "2.769,91",
+      "energieKcal" : 265,
+      "energieKcalPro" : "662,5",
+      "fettJe" : "3,7",
+      "fettPro" : "9,25",
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/wzbm-c1083.appspot.com/o/1.png?alt=media&token=4f9b070d-f632-41b7-9f17-ebb8607570f6",
+      "kohlenhydrate" : 48,
+      "kohlenhydratePro" : 120,
+      "pictureNum" : "1",
+      "salzJe" : 1,
+      "salzPro" : "2,5",
+      "title" : "Toastbrot",
+      "volume" : 250
+    },
+    "-MX1VHHIvZzPs_oxu-Bh" : {
+      "ballaststoffe" : "1,8",
+      "ballaststoffePro" : "4,5",
+      "category" : "Brot, Reis, Nudeln und andere Getreidearten",
+      "davonGes" : "0,8",
+      "davonGesPro" : "2",
+      "davonZucker" : "7,3",
+      "davonZuckerPro" : "18,25",
+      "eiweiss" : "9,8",
+      "eiweissPro" : "24,5",
+      "energieKJ" : "1,166.50",
+      "energieKJPro" : "2.916,25",
+      "energieKcal" : "279",
+      "energieKcalPro" : "697,5",
+      "fettJe" : "3,9",
+      "fettPro" : "9,75",
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/wzbm-c1083.appspot.com/o/2.png?alt=media&token=492289a0-6e44-481d-a93e-f6565f6f5f83",
+      "kohlenhydrate" : "50",
+      "kohlenhydratePro" : "125",
+      "pictureNum" : "2",
+      "salzJe" : "1,2",
+      "salzPro" : "3",
+      "title" : "Hamburger Brötchen",
+      "volume" : "250"
+    },
+    "-MX1XGLlZhtmXEUvc794" : {
+      "ballaststoffe" : "6",
+      "ballaststoffePro" : "15",
+      "category" : "Brot, Reis, Nudeln und andere Getreidearten",
+      "davonGes" : "0,4",
+      "davonGesPro" : "1",
+      "davonZucker" : "3,2",
+      "davonZuckerPro" : "8",
+      "eiweiss" : "8,5",
+      "eiweissPro" : "21,2",
+      "energieKJ" : "1,045.25",
+      "energieKJPro" : "2.613,13",
+      "energieKcal" : "250",
+      "energieKcalPro" : "625",
+      "fettJe" : "4",
+      "fettPro" : "10",
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/wzbm-c1083.appspot.com/o/3.png?alt=media&token=05276921-b5e6-4ff1-9561-ff3450e0eef1",
+      "kohlenhydrate" : "42",
+      "kohlenhydratePro" : "105",
+      "pictureNum" : "3",
+      "salzJe" : "1",
+      "salzPro" : "2,5",
+      "title" : "Vollkorn-Toast",
+      "volume" : "250"
+    },
+    "-MX1YoTasABneCJfUAOM" : {
+      "ballaststoffe" : "8,3",
+      "ballaststoffePro" : "41,5",
+      "category" : "Brot, Reis, Nudeln und andere Getreidearten",
+      "davonGes" : "0,2",
+      "davonGesPro" : "1",
+      "davonZucker" : "0,6",
+      "davonZuckerPro" : "3",
+      "eiweiss" : "8,2",
+      "eiweissPro" : "41",
+      "energieKJ" : "886.37",
+      "energieKJPro" : "4.435",
+      "energieKcal" : "212",
+      "energieKcalPro" : "1060",
+      "fettJe" : "1,6",
+      "fettPro" : "8",
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/wzbm-c1083.appspot.com/o/4.png?alt=media&token=b3d3405f-5afa-439f-8d9f-3313da4894ea",
+      "kohlenhydrate" : "38,5",
+      "kohlenhydratePro" : "192,5",
+      "pictureNum" : "4",
+      "salzJe" : "1,1",
+      "salzPro" : "5,5",
+      "title" : "Dinkelbrot",
+      "volume" : "500"
+    },
+    "-MX1cBCvW9askLxMW-vE" : {
+      "ballaststoffe" : "6",
+      "ballaststoffePro" : "60",
+      "category" : "Brot, Reis, Nudeln und andere Getreidearten",
+      "davonGes" : "0,7",
+      "davonGesPro" : "7",
+      "davonZucker" : "4,3",
+      "davonZuckerPro" : "43",
+      "eiweiss" : "12",
+      "eiweissPro" : "12",
+      "energieKJ" : "1,053.61",
+      "energieKJPro" : "10.543,6",
+      "energieKcal" : "252",
+      "energieKcalPro" : "2.520",
+      "fettJe" : "3,5",
+      "fettPro" : "35",
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/wzbm-c1083.appspot.com/o/5.png?alt=media&token=e4a80d8e-66b0-4841-9194-69352ae5e9c8",
+      "kohlenhydrate" : "43",
+      "kohlenhydratePro" : "430",
+      "pictureNum" : "5",
+      "salzJe" : "1,1",
+      "salzPro" : "10,1",
+      "title" : "Vollkornbrot",
+      "volume" : "1000"
+    }
+  },
+  "users" : {
+    "S2GV5eEkrwdPOVQDlCNSKoaRH5h2" : {
+      "email" : "ovitahsan@gmail.com",
+      "name" : "Ovi Tahsan"
+    },
+    "rT9NN3UvTQU2fPiAYiRiniDszvD3" : {
+      "email" : "faysalibnmizan@gmail.com",
+      "isAdmin" : true,
+      "name" : "Faysal Ibn Mizan"
+    }
+  }
+}
