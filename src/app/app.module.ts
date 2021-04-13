@@ -1,4 +1,4 @@
-
+import { HistoryService } from './history.service';
 import { OrderService } from './order.service';
 import { ProductsService } from './products.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
@@ -75,7 +75,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     CategoriesService,
     ProductsService,
     CartService,
-    OrderService
+    OrderService,
+    HistoryService
   ],
   bootstrap: [AppComponent],
 })

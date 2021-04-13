@@ -29,7 +29,7 @@ export class ProductsComponent {
     this.products$ = this.route.queryParamMap.pipe(
       switchMap((params) => {
         if (!params) return of(null);
-
+      
         let category = params.get('category');
         return this.applyFilter(category);
       })
