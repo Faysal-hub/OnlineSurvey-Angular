@@ -2,7 +2,7 @@ import { Cart } from './cart';
 import { OrderLine } from './orderLine';
 
 export class Order {
-  createdOn = new Date().toLocaleDateString();
+  createdOn = new Date().toString();
   orderLines: OrderLine[];
   cartId: string;
 

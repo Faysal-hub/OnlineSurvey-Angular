@@ -1,3 +1,4 @@
+import { Product } from './../models/product';
 import { Cart } from './../models/cart';
 import { CartService } from './../cart.service';
 import { ActivatedRoute } from '@angular/router';
@@ -5,7 +6,6 @@ import { ProductsService } from './../products.service';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable, of, Subscription } from 'rxjs';
 import { Component } from '@angular/core';
-import { Product } from '../models/product';
 
 @Component({
   selector: 'products',
@@ -14,6 +14,7 @@ import { Product } from '../models/product';
 })
 export class ProductsComponent {
   products$: Observable<Product[]>;
+  randomProducts$: Observable<Product[]>;
   cart$: Observable<Cart>;
 
   constructor(
@@ -25,11 +26,15 @@ export class ProductsComponent {
     this.getCart();
   }
 
+  random() {
+    return Math.random();
+  }
+
   private getProducts(): void {
     this.products$ = this.route.queryParamMap.pipe(
       switchMap((params) => {
         if (!params) return of(null);
-      
+
         let category = params.get('category');
         return this.applyFilter(category);
       })

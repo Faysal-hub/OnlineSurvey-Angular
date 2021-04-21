@@ -7,7 +7,7 @@
     <div *ngIf="cart && showActions" class="card-footer">
         <!-- <button routerLink="/product-details" class="btn btn-info btn-block">Product Details</button> -->
 
-        <button class="btn btn-info btn-block myButton" (click)="open(content)">Produktdetails</button>
+        <button class="btn btn-info btn-block myButton" (click)="open(content)">Nährwertangaben</button>
 
         <ng-template #content let-modal>
             <div class="modal-header">
@@ -23,84 +23,55 @@
             <div class="modal-body">
             <table class="table table-striped table-dark">
                 <thead>
-                    <!-- <tr>
-                        <th scope="col">Nutritional Labels</th>
-                        <th scope="col">Value</th>
-                    </tr> -->
+                    <tr>
+                        <th scope="col">Nährwerte pro</th>
+                        <th scope="col">100 g</th>
+                        <th scope="col">Riegel</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Energie (kJ) je 100 g</td>
-                        <td>{{ product.energieKJ }}</td>
+                        <td>Brennwert</td>
+                        <td>{{ product.energieKJ }} KJ / {{ product.energieKcal }} Kcal</td>
+                        <td>{{ product.energieKJPro }} kJ / {{ product.energieKcalPro }} Kcal </td>
                     </tr>
                     <tr>
-                        <td>Energie (kcal) je 100 g</td>
-                        <td>{{ product.energieKcal }}</td>
+                        <td>Fett</td>
+                        <td>{{ product.fettJe }} g</td>
+                        <td>{{ product.fettPro }} g</td>
                     </tr>
                     <tr>
-                        <td>Fett je 100 g</td>
-                        <td>{{ product.fettJe }}</td>
+                        <td>davon ges. Fettsäuren</td>
+                        <td>{{ product.davonGes }} g</td>
+                        <td>{{ product.davonGesPro }} g</td>
+
                     </tr>
                     <tr>
-                        <td>davon ges. Fettsäuren je 100 g</td>
-                        <td>{{ product.davonGes }}</td>
+                        <td>Kohlenhydrate</td>
+                        <td>{{ product.kohlenhydrate }} g</td>
+                        <td>{{ product.kohlenhydratePro }} g</td>
                     </tr>
                     <tr>
-                        <td>Kohlenhydrate je 100 g</td>
-                        <td>{{ product.kohlenhydrate }}</td>
+                        <td>davon Zucker</td>
+                        <td>{{ product.davonZucker }} g</td>
+                        <td>{{ product.davonZuckerPro }} g</td>
                     </tr>
                     <tr>
-                        <td>davon Zucker je 100 g</td>
-                        <td>{{ product.davonZucker }}</td>
+                        <td>Ballaststoffe</td>
+                        <td>{{ product.ballaststoffe }} g</td>
+                        <td>{{ product.ballaststoffePro }} g</td>
                     </tr>
                     <tr>
-                        <td>Ballaststoffe je 100 g</td>
-                        <td>{{ product.ballaststoffe }}</td>
+                        <td>Eiweiß</td>
+                        <td>{{ product.eiweiss }} g</td>
+                        <td>{{ product.eiweissPro }} g</td>
                     </tr>
                     <tr>
-                        <td>Eiweiß je 100 g</td>
-                        <td>{{ product.eiweiss }}</td>
+                        <td>Salz</td>
+                        <td>{{ product.salzJe }} g</td>
+                        <td>{{ product.salzPro }} g</td>
                     </tr>
-                    <tr>
-                        <td>Salz je 100 g</td>
-                        <td>{{ product.salzJe }}</td>
-                    </tr>
-                    <tr>
-                        <td>Energie (kJ) pro Riegel</td>
-                        <td>{{ product.energieKJPro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Energie (kcal) pro Riegel</td>
-                        <td>{{ product.energieKcalPro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Fett pro Riegel</td>
-                        <td>{{ product.fettPro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Davon ges. Fettsäuren pro Riegel</td>
-                        <td>{{ product.davonGesPro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Kohlenhydrate pro Riegel</td>
-                        <td>{{ product.kohlenhydratePro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Davon Zucker pro Riegel</td>
-                        <td>{{ product.davonZuckerPro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Ballaststoffe pro Riegel</td>
-                        <td>{{ product.ballaststoffePro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Eiweiß pro Riegel</td>
-                        <td>{{ product.eiweissPro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Salz pro Riegel</td>
-                        <td>{{ product.salzPro }}</td>
-                    </tr>
+                    
                 </tbody>
             </table>
             </div>

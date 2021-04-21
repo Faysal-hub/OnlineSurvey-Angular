@@ -13,7 +13,7 @@
                     <th></th>
                     <th scope="col">Produkt</th>
                     <th scope="col" class="text-center" style="width: 230px;">Menge</th>
-                    <th scope="col" class="text-right" style="width: 200px;">Volumen (Gramm)</th>
+                    <!-- <th scope="col" class="text-right" style="width: 200px;">Volumen (Gramm)</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -25,14 +25,14 @@
                     <td class="text-center">
                         <product-quantity [product]="item" [cart]="cart"></product-quantity>
                     </td>
-                    <td class="text-right">{{ item.totalVolume }}</td>
+                    <!-- <td class="text-right">{{ item.totalVolume }}</td> -->
                 </tr>
             </tbody>
             <tfoot>
                 <th></th>
                 <th></th>
                 <th></th>
-                <th class="text-right">{{ cart.totalVolume }} gramm</th>
+                <!-- <th class="text-right">{{ cart.totalVolume }} gramm</th> -->
             </tfoot>
         </table>
         <button *ngIf="cart.itemsCount" routerLink="/checkout" class="btn btn-primary cOut">Zur Kasse</button>
