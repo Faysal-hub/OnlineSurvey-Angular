@@ -24,15 +24,6 @@ export class Cart {
     return count;
   }
 
-  get totalVolume(): number {
-    let total = 0;
-    for (let item of this.items) {
-      total += item.totalVolume;
-    }
-
-    return total;
-  }
-
   getQuantity(product: Product): number {
     if (!this.cartLines) return 0;
 

@@ -2,7 +2,7 @@ import { Cart } from './cart';
 import { OrderLine } from './orderLine';
 
 export class Order {
-  createdOn = new Date().toString();
+  submittedOn = new Date().toString();
   orderLines: OrderLine[];
   cartId: string;
 
@@ -13,8 +13,7 @@ export class Order {
           item.title,
           item.imageUrl,
           item.volume,
-          item.quantity,
-          item.totalVolume
+          item.quantity
         )
     );
     this.cartId = cart.key;

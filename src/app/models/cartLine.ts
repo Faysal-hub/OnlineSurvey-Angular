@@ -7,12 +7,8 @@ export class CartLine {
   imageUrl: string;
   quantity: number;
 
-  constructor(init? : Partial<CartLine>) {
-        Object.assign(this, init);
-    }
-
-    get totalVolume() : number{
-        return this.quantity * this.volume;
-    }
+  constructor(init?: Partial<CartLine>) {
+    Object.assign(this, init);
+  }
 } 
 

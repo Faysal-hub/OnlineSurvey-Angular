@@ -4,6 +4,5 @@ export class OrderLine {
     public imageUrl: string,
     public volume: number,
     public quantity: number,
-    public totalVolume: number
   ) {}
 }

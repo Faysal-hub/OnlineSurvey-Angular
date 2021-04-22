@@ -69,6 +69,7 @@ export class CartService {
           volume: product.volume,
           imageUrl: product.imageUrl,
           quantity: (cl.quantity || 0) + change,
+          productSelectedOn: new Date().toString(),
         });
       });
 
@@ -101,37 +102,8 @@ export class CartService {
   }
 
   private create(): firebase.database.ThenableReference {
-    let date = new Date();
-
-    let weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    let monthNames = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    var dateString =
-      weekdayNames[date.getDay()] +
-      ' ' +
-      date.getHours() +
-      ':' +
-      ('00' + date.getMinutes()).slice(-2) +
-      ' ' +
-      date.getDate() +
-      ' ' +
-      monthNames[date.getMonth()] +
-      ' ' +
-      date.getFullYear();
     return this.db.list(this.dbPath).push({
-      createdOn: dateString,
+      createdOn: new Date().toString()
     });
   }
 
