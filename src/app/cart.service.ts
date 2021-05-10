@@ -15,7 +15,6 @@ import { Cart } from './models/cart';
 })
 export class CartService {
   private readonly dbPath = '/carts';
-  // private readonly dbPathHistory = '/cartHistory';
 
   constructor(private db: AngularFireDatabase) {}
 
@@ -27,10 +26,6 @@ export class CartService {
   async addToCart(product: Product): Promise<void> {
     return this.updateQuantity(product, 1);
   }
-
-  // addToHistory(product: Product): Promise<void> {
-  //   return this.updateQuantity(product, 1);
-  // }
 
   async removeFromCart(product: Product): Promise<void> {
     return this.updateQuantity(product, -1);
@@ -53,8 +48,6 @@ export class CartService {
   ): Promise<void> {
     let cartId = await this.getOrCreateCartId();
     let cartLine$ = this.getCartLine(cartId, product.key);
-    // console.log(cartLine$);
-    // let cartHistory$ = this.getCartHistory(cartId, product.key);
 
     cartLine$
       .snapshotChanges()
@@ -72,22 +65,6 @@ export class CartService {
           productSelectedOn: new Date().toString(),
         });
       });
-
-    // cartHistory$
-    //   .snapshotChanges()
-    //   .pipe(take(1))
-    //   .pipe(map((scl) => ({ key: scl.key, ...scl.payload.val() })))
-    //   .subscribe((cl) => {
-    //     let quantity = (cl.quantity || 0) + change;
-    //     if (quantity === 0) return this.removeCartLine(cartLine$);
-
-    //     return this.updateCartLine(cartLine$, {
-    //       title: product.title,
-    //       volume: product.volume,
-    //       imageUrl: product.imageUrl,
-    //       quantity: (cl.quantity || 0) + change,
-    //     });
-    //   });
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -115,15 +92,6 @@ export class CartService {
       `${this.dbPath}/${cartId}/cartLines/${productId}`
     );
   }
-
-  // private getCartHistory(
-  //   cartId: string,
-  //   productId: string
-  // ): AngularFireObject<CartLine>{
-  //   return this.db.object<CartLine>(
-  //     `${this.dbPath}/${cartId}/cartHistory/${productId}`
-  //   );
-  // }
 
   private updateCartLine(
     cartLine$: AngularFireObject<CartLine>,
