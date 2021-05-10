@@ -48,6 +48,7 @@ export class CartService {
   ): Promise<void> {
     let cartId = await this.getOrCreateCartId();
     let cartLine$ = this.getCartLine(cartId, product.key);
+    let cartHistory$ = this.getCardHistory(cartId, product.key);
 
     cartLine$
       .snapshotChanges()
@@ -80,7 +81,7 @@ export class CartService {
 
   private create(): firebase.database.ThenableReference {
     return this.db.list(this.dbPath).push({
-      createdOn: new Date().toString()
+      createdOn: new Date().toString(),
     });
   }
 
@@ -90,6 +91,15 @@ export class CartService {
   ): AngularFireObject<CartLine> {
     return this.db.object<CartLine>(
       `${this.dbPath}/${cartId}/cartLines/${productId}`
+    );
+  }
+
+  private getCardHistory(
+    cartId: string,
+    productId: string
+  ): AngularFireObject<CartLine> {
+    return this.db.object<CartLine>(
+      `${this.dbPath}/${cartId}/cartHistory/${productId}`
     );
   }
 

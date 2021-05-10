@@ -49,7 +49,6 @@ export class ProductCardComponent {
   addToCart(): void {
     this.cartService.addToCart(this.product);
     // this.cartService.addToHistory(this.product);
-
   }
 
   removeFromCart(): void {
