@@ -1,4 +1,3 @@
-import { Product } from './product';
 
 export class CartLine {
   key: string;

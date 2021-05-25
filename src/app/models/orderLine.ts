@@ -3,6 +3,6 @@ export class OrderLine {
     public title: string,
     public imageUrl: string,
     public volume: number,
-    public quantity: number,
+    public quantity: number
   ) {}
 }

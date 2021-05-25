@@ -80,7 +80,6 @@
             </div>
         </ng-template>
 
-
         <button 
         *ngIf="cart.getQuantity(product) === 0; else updateQuantity"
         (click)="addToCart()" 

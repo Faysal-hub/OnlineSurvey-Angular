@@ -1,4 +1,5 @@
 import { CartLine } from './models/cartLine';
+import { CartHistory } from './models/cartHistory';
 import {
   AngularFireDatabase,
   AngularFireObject,
@@ -24,11 +25,11 @@ export class CartService {
   }
 
   async addToCart(product: Product): Promise<void> {
-    return this.updateQuantity(product, 1);
+    return this.updateQuantity(product, 1, "added");
   }
 
   async removeFromCart(product: Product): Promise<void> {
-    return this.updateQuantity(product, -1);
+    return this.updateQuantity(product, -1, "removed");
   }
 
   async clearCart(): Promise<void> {
@@ -44,11 +45,13 @@ export class CartService {
 
   private async updateQuantity(
     product: Product,
-    change: number
+    change: number,
+    difference
   ): Promise<void> {
     let cartId = await this.getOrCreateCartId();
+    let cartHistoryId = await this.CreateCartHistoryId(cartId);
     let cartLine$ = this.getCartLine(cartId, product.key);
-    let cartHistory$ = this.getCardHistory(cartId, product.key);
+    let cartHistory$ = this.getCartHistory(cartId, cartHistoryId, product.key);
 
     cartLine$
       .snapshotChanges()
@@ -66,6 +69,18 @@ export class CartService {
           productSelectedOn: new Date().toString(),
         });
       });
+
+    cartHistory$
+      .snapshotChanges()
+      .pipe(take(1))
+      .pipe(map((scl) => ({ key: scl.key, ...scl.payload.val() })))
+      .subscribe(() =>
+        cartHistory$.update({
+          product: product,
+          selectedOn: new Date().toLocaleString(),
+          eType: difference,
+        })
+      );
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -75,13 +90,24 @@ export class CartService {
 
     let cart = this.create();
     localStorage.setItem('cartId', cart.key);
-
     return cart.key;
   }
 
   private create(): firebase.database.ThenableReference {
     return this.db.list(this.dbPath).push({
       createdOn: new Date().toString(),
+    });
+  }
+
+  private async CreateCartHistoryId(cartId: string): Promise<string> {
+    let cartHistory = await this.createHistoryId(cartId);
+    console.log(cartHistory.key);
+    return cartHistory.key;
+  }
+
+  private createHistoryId(cartId: string): firebase.database.ThenableReference {
+    return this.db.list('/carts/' + cartId + '/cartHistory/').push({
+      createdOn: new Date().toLocaleString(),
     });
   }
 
@@ -94,12 +120,13 @@ export class CartService {
     );
   }
 
-  private getCardHistory(
+  private getCartHistory(
     cartId: string,
+    cartHistoryId: string,
     productId: string
-  ): AngularFireObject<CartLine> {
-    return this.db.object<CartLine>(
-      `${this.dbPath}/${cartId}/cartHistory/${productId}`
+  ): AngularFireObject<CartHistory> {
+    return this.db.object<CartHistory>(
+      `${this.dbPath}/${cartId}/cartHistory/${cartHistoryId}${productId}`
     );
   }
 
