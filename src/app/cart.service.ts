@@ -50,9 +50,10 @@ export class CartService {
   ): Promise<void> {
     let cartId = await this.getOrCreateCartId();
     let cartHistoryId = await this.CreateCartHistoryId(cartId);
+    // console.log("cartHistoryId", cartHistoryId);
     let cartLine$ = this.getCartLine(cartId, product.key);
     let cartHistory$ = this.getCartHistory(cartId, cartHistoryId, product.key);
-
+    
     cartLine$
       .snapshotChanges()
       .pipe(take(1))
@@ -69,6 +70,7 @@ export class CartService {
           productSelectedOn: new Date().toString(),
         });
       });
+
 
     cartHistory$
       .snapshotChanges()
@@ -100,8 +102,8 @@ export class CartService {
   }
 
   private async CreateCartHistoryId(cartId: string): Promise<string> {
-    let cartHistory = await this.createHistoryId(cartId);
-    console.log(cartHistory.key);
+    let cartHistory = this.createHistoryId(cartId);
+    // console.log(cartHistory.key);
     return cartHistory.key;
   }
 
@@ -125,6 +127,7 @@ export class CartService {
     cartHistoryId: string,
     productId: string
   ): AngularFireObject<CartHistory> {
+    // console.log('getCartHistory.cartHistoryId', cartHistoryId);
     return this.db.object<CartHistory>(
       `${this.dbPath}/${cartId}/cartHistory/${cartHistoryId}${productId}`
     );
