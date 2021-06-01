@@ -1,3 +1,4 @@
+import { ProductHistory } from './models/ptoductForHistory';
 import { CartLine } from './models/cartLine';
 import { CartHistory } from './models/cartHistory';
 import {
@@ -25,11 +26,11 @@ export class CartService {
   }
 
   async addToCart(product: Product): Promise<void> {
-    return this.updateQuantity(product, 1, "added");
+    return this.updateQuantity(product, 1, 'added');
   }
 
   async removeFromCart(product: Product): Promise<void> {
-    return this.updateQuantity(product, -1, "removed");
+    return this.updateQuantity(product, -1, 'removed');
   }
 
   async clearCart(): Promise<void> {
@@ -38,6 +39,11 @@ export class CartService {
 
     return this.removeCartLines(cartLines$);
   }
+
+  // async removeItem(item: Product) {
+  //   let cartId = await this.getOrCreateCartId();
+  //   this.db.object('/carts/' + cartId + '/cartLines/' + item.key).remove();
+  // }
 
   unassignCart(): void {
     localStorage.removeItem('cartId');
@@ -50,10 +56,9 @@ export class CartService {
   ): Promise<void> {
     let cartId = await this.getOrCreateCartId();
     let cartHistoryId = await this.CreateCartHistoryId(cartId);
-    // console.log("cartHistoryId", cartHistoryId);
     let cartLine$ = this.getCartLine(cartId, product.key);
     let cartHistory$ = this.getCartHistory(cartId, cartHistoryId, product.key);
-    
+
     cartLine$
       .snapshotChanges()
       .pipe(take(1))
@@ -70,7 +75,6 @@ export class CartService {
           productSelectedOn: new Date().toString(),
         });
       });
-
 
     cartHistory$
       .snapshotChanges()
@@ -108,8 +112,8 @@ export class CartService {
   }
 
   private createHistoryId(cartId: string): firebase.database.ThenableReference {
-    return this.db.list('/carts/' + cartId + '/cartHistory/').push({
-      createdOn: new Date().toLocaleString(),
+    return this.db.list('/carts/' + cartId + 'cartLines/cartHistory/').push({
+      // createdOn: new Date().toLocaleString(),
     });
   }
 
@@ -139,6 +143,13 @@ export class CartService {
   ): Promise<void> {
     return cartLine$.update(cartLine);
   }
+
+  // private updateCartHistory(
+  //   cartHistory$: AngularFireObject<CartLine>,
+  //   cartLine: any
+  // ): Promise<void> {
+  //   return cartLine$.update(cartLine);
+  // }
 
   private removeCartLine(
     cartLine$: AngularFireObject<CartLine>

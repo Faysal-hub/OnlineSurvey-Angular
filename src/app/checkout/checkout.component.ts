@@ -1,5 +1,5 @@
-
-import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { Shipping } from './../models/shipping';
 import { OrderService } from './../order.service';
 import { map } from 'rxjs/operators';
 import { Cart } from './../models/cart';
@@ -7,7 +7,6 @@ import { CartService } from './../cart.service';
 import { Order } from './../models/order';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import firebase from 'firebase';
 
 @Component({
   selector: 'checkout',
@@ -15,14 +14,13 @@ import firebase from 'firebase';
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
-  // public shipping: Shipping = {} as Shipping;
+  public shipping: Shipping = {} as Shipping;
   public cart: Cart;
   private cartSubscription: Subscription;
 
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
-    private router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -42,7 +40,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   async placeOrder(): Promise<void> {
-    let order = new Order(this.cart);
+    let order = new Order(this.cart, this.shipping);
     let result = await this.orderService.placeOrder(order);
 
     window.location.href = `/order-success/${result.key}`;

@@ -1,0 +1,30 @@
+.btn-login {
+  height: 53px;
+  width: 250px;
+  font-size: 16px;
+}
+
+.align-center-flex {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-content: center;
+}
+
+body {
+  padding: 2em;
+}
+
+.google {
+  background: #DD4B39;
+  background-image: linear-gradient(#DD4B39, #c21a07);
+}
+
+.google:hover, .google:focus {
+  background: #E74B37;
+}
