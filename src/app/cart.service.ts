@@ -1,4 +1,3 @@
-import { ProductHistory } from './models/ptoductForHistory';
 import { CartLine } from './models/cartLine';
 import { CartHistory } from './models/cartHistory';
 import {
@@ -131,7 +130,6 @@ export class CartService {
     cartHistoryId: string,
     productId: string
   ): AngularFireObject<CartHistory> {
-    // console.log('getCartHistory.cartHistoryId', cartHistoryId);
     return this.db.object<CartHistory>(
       `${this.dbPath}/${cartId}/cartHistory/${cartHistoryId}${productId}`
     );
@@ -148,7 +146,7 @@ export class CartService {
   //   cartHistory$: AngularFireObject<CartLine>,
   //   cartLine: any
   // ): Promise<void> {
-  //   return cartLine$.update(cartLine);
+  //   return cartHistory$.update(cartLine);
   // }
 
   private removeCartLine(

@@ -4,14 +4,14 @@
     </div>
     <div class="col-9">
         <div *ngIf="cart$ | async as cart" class="row">
-            <ng-container *ngFor="let product of products$ | async; let i = index">
+            <ng-container *ngFor="let product of randomProducts$ | async; let i = index">
                 <div class="col">
                     <product-card [product]="product" [cart]="cart"></product-card>
                     <div *ngIf="(i + 1) % 2 === 0" class="row row-cols-2"></div>
                 </div>
             </ng-container>
         </div>
-        <div *ngIf="(products$ | async)?.length === 0" class="alert alert-info" role="alert">
+        <div *ngIf="(randomProducts$ | async)?.length === 0" class="alert alert-info" role="alert">
         <h1>Keine Produkte gefunden!</h1>
         </div>
     </div>

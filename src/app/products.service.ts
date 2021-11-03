@@ -19,36 +19,36 @@ export class ProductsService {
   }
 
   getAll(): AngularFireList<Product> {
-        var myArray = [
-          'ballaststoffe',
-          'ballaststoffePro',
-          'davonGes',
-          'davonGesPro',
-          'davonZucker',
-          'davonZuckerPro',
-          'eiweiss',
-          'eiweissPro',
-          'energieKJ',
-          'energieKJPro',
-          'energieKcal',
-          'energieKcalPro',
-          'fettJe',
-          'fettPro',
-          'kohlenhydrate',
-          'kohlenhydratePro',
-          'pictureNum',
-          'salzJe',
-          'salzPro',
-          'volume',
-        ];
+        // var myArray = [
+        //   'ballaststoffe',
+        //   'ballaststoffePro',
+        //   'davonGes',
+        //   'davonGesPro',
+        //   'davonZucker',
+        //   'davonZuckerPro',
+        //   'eiweiss',
+        //   'eiweissPro',
+        //   'energieKJ',
+        //   'energieKJPro',
+        //   'energieKcal',
+        //   'energieKcalPro',
+        //   'fettJe',
+        //   'fettPro',
+        //   'kohlenhydrate',
+        //   'kohlenhydratePro',
+        //   'pictureNum',
+        //   'salzJe',
+        //   'salzPro',
+        //   'volume',
+        // ];
 
-        var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
+        // var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
 
-        return this.db.list<Product>(this.dbPath, (ref) => {
-          var rint = Math.floor(Math.random() * 170); // you have 170 records
-          return ref.orderByChild(randomItem).startAt(rint).limitToFirst(170);
-        });
-    // return this.products;
+        // return this.db.list<Product>(this.dbPath, (ref) => {
+        //   var rint = Math.floor(Math.random() * 170); // you have 170 records
+        //   return ref.orderByChild(randomItem).startAt(rint).limitToFirst(170);
+        // });
+    return this.products;
   }
 
   getByCategory(category: string): AngularFireList<Product> {

@@ -4,7 +4,7 @@ import { CartService } from './../cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from './../products.service';
 import { map, switchMap } from 'rxjs/operators';
-import { Observable, of, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
 import { Component } from '@angular/core';
 
 @Component({
@@ -14,7 +14,8 @@ import { Component } from '@angular/core';
 })
 export class ProductsComponent {
   products$: Observable<Product[]>;
-  randomProducts$: Observable<Product[]>;
+  randomProductsSource = new BehaviorSubject<Product[] | null>(null);
+  randomProducts$ = this.randomProductsSource.asObservable();
   cart$: Observable<Cart>;
 
   constructor(
@@ -24,11 +25,15 @@ export class ProductsComponent {
   ) {
     this.getProducts();
     this.getCart();
+
+    this.products$.subscribe((_products) => {
+      if (_products && _products?.length > 0) {
+        this.randomizeArray(_products);
+        this.setRandomProducts(_products);
+      }
+    });
   }
 
-  random() {
-    return Math.random();
-  }
 
   private getProducts(): void {
     this.products$ = this.route.queryParamMap.pipe(
@@ -72,4 +77,16 @@ export class ProductsComponent {
         )
       );
   }
+
+  private setRandomProducts(data: Product[] | null) {
+    this.randomProductsSource.next(data);
+  }
+
+  private randomizeArray(arrayProducts) {
+     for (let i = arrayProducts.length-1; i > 0; i--) {
+        const j = Math.floor( Math.random()*(i+1) );
+        [arrayProducts[i], arrayProducts[j]] = [arrayProducts[j], arrayProducts[i]];
+     }
+  }
+
 }
