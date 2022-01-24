@@ -9,7 +9,7 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,9 @@ import { CartComponent } from './cart/cart.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CountdownModule } from 'ngx-countdown';
+
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -58,6 +61,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductDetailsComponent,
   ],
   imports: [
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -78,6 +83,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     OrderService,
     HistoryService
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
